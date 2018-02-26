@@ -2,6 +2,7 @@
 Simple Proof of Work with Kotlin/Coroutines.</br>This is **not** blockchain.</br>Each block is independent.
 
 ##Status
+
 [![Build Status](https://travis-ci.org/wojciech-zurek/kotlin-proof-of-work.svg?branch=master)](https://travis-ci.org/wojciech-zurek/kotlin-proof-of-work)
 
 ## Download
