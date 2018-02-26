@@ -11,7 +11,7 @@ Simple Proof of Work with Kotlin/Coroutines.</br>This is **not** blockchain.</br
 ## Run with gradle
 
 ```bash
-    cd kotlin_proof_of_work/
+    cd kotlin-proof-of-work/
     ./gradlew run
     
 ```
@@ -19,7 +19,7 @@ Simple Proof of Work with Kotlin/Coroutines.</br>This is **not** blockchain.</br
 ## Run as jar file
 
 ```bash
-    cd kotlin_proof_of_work/
+    cd kotlin-proof-of-work/
     ./gradlew fatJar
     java -jar build/libs/proofofwork-1.0-SNAPSHOT.jar
     
@@ -53,7 +53,7 @@ Completed in 79.149 s
 ## Test
 
 ```bash
-    cd kotlin_proof_of_work/
+    cd kotlin-proof-of-work/
     ./gradlew clean test
     
 ```
