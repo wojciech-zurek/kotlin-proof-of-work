@@ -19,7 +19,7 @@ Simple Proof of Work with Kotlin/Coroutines.</br>This is **not** blockchain.</br
 ```bash
     cd kotlin-proof-of-work/
     ./gradlew fatJar
-    java -jar build/libs/proofofwork-1.0-SNAPSHOT.jar
+    java -jar build/libs/kotlin-proof-of-work-1.0-SNAPSHOT.jar
 ```
 
 ## Sample output
