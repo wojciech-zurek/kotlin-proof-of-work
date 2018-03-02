@@ -21,4 +21,4 @@ fun progress(proofOfWorkRequest: ProofOfWorkRequest, nonce: Long, start: Long): 
     return info().format(thread.name, proofOfWorkRequest.id, proofOfWorkRequest.hashAlg, nonce, nonce / seconds)
 }
 
-fun info() = "[%s], req id: [%s], hash alg: [%s], nonce: [%d], bench: [%s hash/s]"
+fun info() = "[%s], req id: [%d], hash alg: [%s], nonce: [%d], bench: [%s hash/s]"
