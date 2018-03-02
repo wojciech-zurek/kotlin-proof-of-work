@@ -13,3 +13,12 @@ fun toHex(input: ByteArray): String {
 
     return result.toString()
 }
+
+fun progress(proofOfWorkRequest: ProofOfWorkRequest, nonce: Long, start: Long): String {
+    val stop = System.currentTimeMillis()
+    val seconds = (stop - start) / 1000f
+    val thread = Thread.currentThread()
+    return info().format(thread.name, proofOfWorkRequest.id, proofOfWorkRequest.hashAlg, nonce, nonce / seconds)
+}
+
+fun info() = "[%s], req id: [%s], hash alg: [%s], nonce: [%d], bench: [%s hash/s]"

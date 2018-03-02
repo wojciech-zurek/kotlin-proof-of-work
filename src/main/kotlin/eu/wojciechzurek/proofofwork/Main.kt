@@ -10,22 +10,7 @@ const val HASH_ALG = "SHA-256"
 
 fun main(args: Array<String>) {
 
-    val target = BigInteger.ONE.shiftLeft(HASH_LENGTH - TARGET_BITS)
-
-    println("Mining target: $target")
-    println("Mining target as hex: ${toHex(target.toByteArray())}")
-
-    val requestList = listOf(
-            ProofOfWorkRequest(0, "Simple task", target, HASH_ALG),
-            ProofOfWorkRequest(1, "Another task", target, HASH_ALG),
-            ProofOfWorkRequest(2, "Ala ma kota", target, HASH_ALG),
-            ProofOfWorkRequest(3, "Send 10 EUR to Ala", target, HASH_ALG),
-            ProofOfWorkRequest(4, "Cool description 1", target, HASH_ALG),
-            ProofOfWorkRequest(5, "Cool description 2", target, HASH_ALG),
-            ProofOfWorkRequest(6, "Cool description 3", target, HASH_ALG)
-            //expensive
-            //,ProofOfWorkRequest(7, "Super expensive task with sha512", BigInteger.ONE.shiftLeft(512 - 28), "SHA-512")
-    )
+    println("Available processors: [${Runtime.getRuntime().availableProcessors()}]")
 
     runBlocking {
         val time = measureTimeMillis {
@@ -43,7 +28,7 @@ fun main(args: Array<String>) {
              *    executor.shutdown() <-- remember to shutdown executor
              *    while (!executor.isTerminated){ }
              */
-            requestList
+            requests()
                     .map { async { proofOfWork(it) } }
                     .map { it.await() }
                     .filter { it != null }
@@ -54,4 +39,25 @@ fun main(args: Array<String>) {
         }
         println("Completed in ${time / 1000f} s")
     }
+}
+
+fun requests(): List<ProofOfWorkRequest> {
+    val target = BigInteger.ONE.shiftLeft(HASH_LENGTH - TARGET_BITS)
+
+    println("Mining target: $target")
+    println("Mining target as hex: ${toHex(target.toByteArray())}")
+    println()
+
+    return listOf(
+            "Simple task",
+            "Another task",
+            "Ala ma kota",
+            "Send 10 EUR to Ala",
+            "Cool description 1",
+            "Cool description 2",
+            "Cool description 3"
+    )
+            .mapIndexed { index, value ->
+                ProofOfWorkRequest(index, value, target, HASH_ALG) //more expensive ProofOfWorkRequest(index, value, BigInteger.ONE.shiftLeft(512 - 28), "SHA-512")
+            }
 }
